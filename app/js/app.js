@@ -21,15 +21,8 @@ angular
     .config(function ($locationProvider, $routeProvider) {
         $locationProvider.html5Mode(true);
         $routeProvider
-            .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
-            })
-            .when('/about', {
-                templateUrl: 'views/about.html',
-                controller: 'AboutCtrl'
-            })
             .otherwise({
-                redirectTo: '/'
+                templateUrl: 'js/game/game.html',
+                controller: 'GameCtrl'
             });
     });
