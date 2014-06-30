@@ -9,17 +9,13 @@
  */
 var app = angular.module('cardGameApp');
 
-app.controller('GameCtrl', function ($scope) {
-    $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-    ];
+app.controller('GameCtrl', function () {
+
 })
     .config(function ($routeProvider) {
         $routeProvider
             .when('/game', {
                 templateUrl: 'js/game/game.html',
-                controller: 'AdminCtrl'
+                controller: 'GameCtrl'
             });
     });

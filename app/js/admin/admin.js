@@ -9,12 +9,8 @@
  */
 var app = angular.module('cardGameApp');
 
-app.controller('AdminCtrl', function ($scope) {
-    $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-    ];
+app.controller('AdminCtrl', function () {
+
 })
     .config(function ($routeProvider) {
         $routeProvider
