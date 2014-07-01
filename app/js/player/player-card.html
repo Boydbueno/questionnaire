@@ -1,0 +1,6 @@
+<div class="well" ng-show="player.name">
+    <h1 ng-show="player.name">
+        {{ player.name }}
+        <span ng-show="player.gender" ng-bind-html="player.genderIcon() | unsafe"></span>
+    </h1>
+</div>

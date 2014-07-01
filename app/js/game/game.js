@@ -12,39 +12,19 @@
     var app = angular.module('cardGameApp');
 
     app.controller('GameCtrl', ['Player', function(Player) {
-        // Todo: Extract into factory
+        // Todo: Let a setting decide the amount of players
         this.players = [
             new Player(),
             new Player()
         ];
-    }])
-        .config(function($routeProvider) {
+    }]);
+
+    app.config(function($routeProvider) {
             $routeProvider
                 .when('/game', {
                     templateUrl: 'js/game/game.html',
                     controller: 'GameCtrl'
                 });
         });
-
-//    var cards = [
-//        {
-//            question: "Are we human?",
-//            category: "Weird",
-//            answers: [
-//                { answer: "Hell no!" },
-//                { answer: "Ofcourse we are!" },
-//                { answer: "Nop, we're dancer.", correct: true }
-//            ]
-//        },
-//        {
-//            question: "What is equal to 1+1?",
-//            category: "Math",
-//            answers: [
-//                { answer: "11!" },
-//                { answer: "4-2!", correct: true },
-//                { answer: "3" }
-//            ]
-//        }
-//    ];
 
 })();
