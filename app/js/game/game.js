@@ -11,14 +11,13 @@
      */
     var app = angular.module('cardGameApp');
 
-    app.controller('GameCtrl', function() {
-
+    app.controller('GameCtrl', ['Player', function(Player) {
         // Todo: Extract into factory
         this.players = [
-            {},
-            {}
+            new Player(),
+            new Player()
         ];
-    })
+    }])
         .config(function($routeProvider) {
             $routeProvider
                 .when('/game', {
