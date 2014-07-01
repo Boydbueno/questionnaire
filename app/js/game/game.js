@@ -12,7 +12,12 @@
     var app = angular.module('cardGameApp');
 
     app.controller('GameCtrl', function() {
-        this.cards = cards;
+
+        // Todo: Extract into factory
+        this.players = [
+            {},
+            {}
+        ];
     })
         .config(function($routeProvider) {
             $routeProvider
@@ -22,25 +27,25 @@
                 });
         });
 
-    var cards = [
-        {
-            question: "Are we human?",
-            category: "Weird",
-            answers: [
-                { answer: "Hell no!" },
-                { answer: "Ofcourse we are!" },
-                { answer: "Nop, we're dancer.", correct: true }
-            ]
-        },
-        {
-            question: "What is equal to 1+1?",
-            category: "Math",
-            answers: [
-                { answer: "11!" },
-                { answer: "4-2!", correct: true },
-                { answer: "3" }
-            ]
-        }
-    ];
+//    var cards = [
+//        {
+//            question: "Are we human?",
+//            category: "Weird",
+//            answers: [
+//                { answer: "Hell no!" },
+//                { answer: "Ofcourse we are!" },
+//                { answer: "Nop, we're dancer.", correct: true }
+//            ]
+//        },
+//        {
+//            question: "What is equal to 1+1?",
+//            category: "Math",
+//            answers: [
+//                { answer: "11!" },
+//                { answer: "4-2!", correct: true },
+//                { answer: "3" }
+//            ]
+//        }
+//    ];
 
 })();
