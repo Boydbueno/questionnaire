@@ -5,10 +5,11 @@
     <div class="players">
         <div class="player well col-md-5" ng-class="{'col-md-offset-2':$last}" ng-repeat="player in game.players">
 
-            <div class="well">
-                <h1>{{ player.name }}</h1>
-                Gender: {{ player.gender }}
-                Age: {{ player.age }}
+            <div class="well" ng-show="player.name">
+                <h1 ng-show="player.name">
+                    {{ player.name }}
+                    <span ng-show="player.gender" ng-bind-html="player.genderIcon() | unsafe"></span>
+                </h1>
             </div>
 
             <form>
@@ -25,11 +26,6 @@
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="age-{{$index}}">Age</label>
-                    <input type="number" id="age-{{$index}}" name="age" class="form-control" placeholder="age"
-                           ng-model="player.age"/>
-                </div>
             </form>
         </div>
     </div>

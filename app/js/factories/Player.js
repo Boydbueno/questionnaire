@@ -12,7 +12,7 @@
 
         Player.prototype = {
             genderIcon: function () {
-                return (this.gender == 'male') ? "&#9792;" : "&#9794;";
+                return (this.gender == 'male') ? "&#9794;" : "&#9792;";
             }
         };
 
