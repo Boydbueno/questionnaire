@@ -14,8 +14,8 @@
     app.controller('GameCtrl', ['Player', function(Player) {
         // Todo: Let a setting decide the amount of players
         this.players = [
-            new Player(),
-            new Player()
+            new Player({number: 1}),
+            new Player({number: 2})
         ];
     }]);
 

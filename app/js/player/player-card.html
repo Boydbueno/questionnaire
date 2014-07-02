@@ -1,4 +1,5 @@
-<div class="well" ng-show="player.name">
+<div class="well clearfix">
+    <small class="pull-right"><em>Player {{ player.number }}</em></small>
     <h1 ng-show="player.name">
         {{ player.name }}
         <span ng-show="player.gender" ng-bind-html="player.genderIcon() | unsafe"></span>
