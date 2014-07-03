@@ -13,11 +13,16 @@
         Player.prototype = {
             setData: function(props) {
                 angular.extend(this, props);
-            },
-            genderIcon: function () {
-                return (this.gender == 'male') ? "&#9794;" : "&#9792;";
             }
         };
+
+        Object.defineProperties(Player.prototype, {
+           genderIcon: {
+               get: function(){
+                   return (this.gender == 'male') ? "&#9794;" : "&#9792;";
+               }
+           }
+        });
 
         return Player;
     }]);

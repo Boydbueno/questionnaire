@@ -2,6 +2,6 @@
     <small class="pull-right"><em>Player {{ player.number }}</em></small>
     <h1 ng-show="player.name">
         {{ player.name }}
-        <span ng-show="player.gender" ng-bind-html="player.genderIcon() | unsafe"></span>
+        <span ng-show="player.gender" ng-bind-html="player.genderIcon | unsafe"></span>
     </h1>
 </div>
