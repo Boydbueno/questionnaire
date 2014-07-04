@@ -7,7 +7,7 @@
         <p>{{ question.question }}</p>
         <ul class="list-unstyled">
             <li ng-repeat="answer in question.answers">
-                <input type="checkbox" name="{$index}" id="{{$index}}" />
+                <input type="radio" name="answer" id="{{$index}}" ng-click="game.answerSelected(answer)" />
                 <label for="{{$index}}">{{ answer.answer }}</label>
             </li>
         </ul>

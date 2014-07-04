@@ -64,11 +64,48 @@
             this.toolbar.disabled = true;
         };
 
+        this.enableToolbar = function() {
+            this.toolbar.disabled = false;
+        };
+
         this.getActivePlayer = function() {
             return this.players.filter(function(player) {
                 return (player.active)
-            });
+            })[0];
         };
+
+        this.nextPlayerTurn = function() {
+            var currentPlayer = this.getActivePlayer();
+            currentPlayer.active = false;
+            var index = this.players.indexOf(currentPlayer);
+
+            if(this.players[index + 1])
+            {
+                this.players[index + 1].active = true;
+            }
+            else
+            {
+                this.players[0].active = true;
+            }
+        };
+
+        this.answerSelected = function(answer) {
+            if(answer.correct) {
+                var index = this.players.indexOf(this.getActivePlayer());
+                this.players[index].score += 10;
+            }
+
+            this.questions = [];
+            this.enableToolbar();
+            this.nextPlayerTurn();
+            this.save();
+        };
+
+        this.save = function() {
+            this.players.forEach(function(player) {
+                player.change();
+            });
+        }
 
     }]);
 
