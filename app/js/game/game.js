@@ -31,17 +31,11 @@
 
         this.newQuestions = function(difficulty) {
             // Get random questions (mocked now)
-            var that = this;
-            $http({
-                method: 'GET',
-                url: '/questions.json'
-            }).success(function(data) {
-                var questions = [];
-                data.forEach(function(question) {
-                   questions.push( new Question(question) );
-                });
-                that.questions = questions;
-            });
+            var question = new Question();
+
+            question.getQuestions(difficulty, function(questions) {
+                this.questions = questions;
+            }, this);
 
             // Disable the difficulty select buttons
             this.disableToolbar();
