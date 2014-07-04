@@ -11,7 +11,7 @@
      */
     var app = angular.module('cardGameApp');
 
-    app.controller('GameCtrl', ['Player', '$http', function(Player, $http) {
+    app.controller('GameCtrl', ['Player', 'Question', '$http', function(Player, Question, $http) {
         // Todo: Let a setting decide the amount of players
         this.players = [
             new Player({number: 1}),
@@ -22,9 +22,7 @@
             disabled: false
         };
 
-        this.questions = {
-            draws: []
-        };
+        this.questions = [];
 
         this.start = function() {
             // Todo: Set random player as starting player
@@ -38,7 +36,11 @@
                 method: 'GET',
                 url: '/questions.json'
             }).success(function(data) {
-                that.questions.draws = data;
+                var questions = [];
+                data.forEach(function(question) {
+                   questions.push( new Question(question) );
+                });
+                that.questions = questions;
             });
 
             // Disable the difficulty select buttons
@@ -46,7 +48,7 @@
         };
 
         this.chooseQuestion = function(question) {
-            question.flipped = true;
+            question.flip();
             this.questions.draws = [question];
         }
 
