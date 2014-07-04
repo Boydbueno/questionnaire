@@ -57,7 +57,7 @@
         };
 
         this.reset = function() {
-            foreach.players(function(player) {
+            forEach.players(function(player) {
                 player.resetScore();
             });
         };
