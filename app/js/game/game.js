@@ -13,24 +13,37 @@
 
     app.controller('GameCtrl', ['Player', 'Question', '$http', function(Player, Question, $http) {
         // Todo: Let a setting decide the amount of players
+        // Setup two players
         this.players = [
             new Player({number: 1}),
             new Player({number: 2})
         ];
 
+        // The toolbar is enabled by default
         this.toolbar = {
             disabled: false
         };
 
+        // The array that will be storing all question objects
         this.questions = [];
 
+        // Start the game
         this.start = function() {
             // Todo: Set random player as starting player
-            this.players[0].active = true;
+
+            // Check if there is no active player
+            if(this.getActivePlayer() == false) {
+                // A random player starts
+                var randomPlayerIndex = Math.floor(Math.random() * this.players.length);
+                this.players[randomPlayerIndex].active = true;
+
+                this.players[randomPlayerIndex].change();
+            }
+
         };
 
+        // This is called when a difficulty button is clicked.
         this.newQuestions = function(difficulty) {
-            // Get random questions (mocked now)
             var question = new Question();
 
             question.getQuestions(difficulty, function(questions) {
@@ -41,18 +54,19 @@
             this.disableToolbar();
         };
 
+        // When a question has been chosen
         this.chooseQuestion = function(question) {
             question.flip();
-            this.questions.draws = [question];
+            this.questions = [question];
         }
 
         this.disableToolbar = function() {
             this.toolbar.disabled = true;
         };
 
-        this.reset = function() {
-            forEach.players(function(player) {
-                player.resetScore();
+        this.getActivePlayer = function() {
+            return this.players.filter(function(player) {
+                return (player.active)
             });
         };
 

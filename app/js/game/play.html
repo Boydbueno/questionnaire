@@ -1,6 +1,6 @@
 <h1>Game</h1>
 
-<div class="well clearfix" ng-controller="GameCtrl as game">
+<div class="well clearfix" ng-controller="GameCtrl as game" ng-init="game.start()">
 
     <div class="players">
         <div class="col-md-5" ng-class="{'col-md-offset-2':$last}" ng-repeat="player in game.players">

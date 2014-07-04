@@ -7,7 +7,8 @@
         var storage = storage;
 
         var defaults = {
-            score: 0
+            score: 0,
+            active: false
         };
 
         function Player(props) {

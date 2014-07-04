@@ -1,10 +1,16 @@
-<div class="question-card-outer" ng-class="{front:question.flipped, back:!question.flipped}" ng-click="game.chooseQuestion(question)">
+<div class="question-card-outer" ng-class="{front:question.flipped, back:!question.flipped}" ng-click="question.flipped || game.chooseQuestion(question)">
     <div class="question-card-inner" ng-hide="question.flipped">
         <span class="category">{{ question.category }}</span>
     </div>
 
     <div class="question-card-inner" ng-show="question.flipped">
         <p>{{ question.question }}</p>
+        <ul class="list-unstyled">
+            <li ng-repeat="answer in question.answers">
+                <input type="checkbox" name="{$index}" id="{{$index}}" />
+                <label for="{{$index}}">{{ answer.answer }}</label>
+            </li>
+        </ul>
     </div>
 
 

@@ -25,6 +25,8 @@
                 this.flipped = !this.flipped;
             },
             getQuestions: function(difficulty, callback, context) {
+                // Todo: Extract in repository
+                // Todo: Clean up
                 $http({
                     method: 'GET',
                     url: '/questions.json'
