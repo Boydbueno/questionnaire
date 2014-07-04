@@ -20,9 +20,7 @@
     </div>
 
     <div class="playmat">
-        <div class="answer-card" ng-repeat="question in game.questions.draws">
-            {{ question.category }}
-        </div>
+        <question-card ng-repeat="question in game.questions.draws"></question-card>
     </div>
 
 </div>
