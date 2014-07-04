@@ -6,7 +6,7 @@
     app.directive('playerCard', function() {
        return {
            restrict: "E",
-           templateUrl: "js/player/player-card.html"
+           templateUrl: "/js/player/player-card.html"
        };
     });
 })();

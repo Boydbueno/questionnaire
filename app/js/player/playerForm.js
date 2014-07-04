@@ -6,7 +6,7 @@
     app.directive('playerForm', function() {
         return {
             restrict: "E",
-            templateUrl: "js/player/player-form.html"
+            templateUrl: "/js/player/player-form.html"
         };
     });
 })();

@@ -1,15 +1,13 @@
-<div ng-controller="GameCtrl as game">
+<h1>Game</h1>
 
-    <h1>Game</h1>
+<div class="players" ng-controller="GameCtrl as game">
+    <div class="player well col-md-5" ng-class="{'col-md-offset-2':$last}" ng-repeat="player in game.players">
 
-    <div class="players">
-        <div class="player well col-md-5" ng-class="{'col-md-offset-2':$last}" ng-repeat="player in game.players">
+        <player-card></player-card>
 
-            <player-card></player-card>
+        <player-form></player-form>
 
-            <player-form></player-form>
-
-        </div>
     </div>
-
 </div>
+
+<a ng-href="game/play" class="btn btn-default" ng-click="game.start()">Start</a>

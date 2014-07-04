@@ -1,7 +1,9 @@
-<div class="well clearfix">
+<div class="well clearfix" ng-class="{active:player.active}">
     <small class="pull-right"><em>Player {{ player.number }}</em></small>
     <h1 ng-show="player.name">
         {{ player.name }}
         <span ng-show="player.gender" ng-bind-html="player.genderIcon | unsafe"></span>
     </h1>
+    <small>Score: <strong>{{ player.score }}</strong></small>
+    <span ng-show="player.active">Active</span>
 </div>

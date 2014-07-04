@@ -15,6 +15,11 @@
                 this.setData( storage.get(this.number) );
             }
 
+            // Todo: Create some defaults object
+            if(!this.score) {
+                this.score = 0;
+            }
+
         }
 
         Player.prototype = {
@@ -22,6 +27,10 @@
                 angular.extend(this, props);
             },
             change: function() {
+                storage.store(this);
+            },
+            resetScore: function() {
+                this.score = 0;
                 storage.store(this);
             }
         };
