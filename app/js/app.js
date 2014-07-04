@@ -9,15 +9,15 @@
  * Main module of the application.
  */
 angular
-    .module('cardGameApp', [
+    .module('cardGameApp', [ // Dependencies
         'ngCookies',
         'ngRoute',
         'ngSanitize'
     ])
     .config(function ($locationProvider, $routeProvider) {
-        $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true); // html5 mode for routing (no hashbangs)
         $routeProvider
-            .otherwise({
+            .otherwise({ // Fallback route
                 templateUrl: 'js/game/game.html',
                 controller: 'GameCtrl'
             });

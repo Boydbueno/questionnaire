@@ -11,8 +11,7 @@
      */
     var app = angular.module('cardGameApp');
 
-    app.controller('GameCtrl', ['Player', 'Question', '$http', function(Player, Question, $http) {
-        // Todo: Let a setting decide the amount of players
+    app.controller('GameCtrl', ['Player', 'Question', function(Player, Question) {
         // Setup two players
         this.players = [
             new Player({number: 1}),
@@ -29,14 +28,13 @@
 
         // Start the game
         this.start = function() {
-            // Todo: Set random player as starting player
-
             // Check if there is no active player
             if(this.getActivePlayer() == false) {
                 // A random player starts
                 var randomPlayerIndex = Math.floor(Math.random() * this.players.length);
                 this.players[randomPlayerIndex].active = true;
 
+                // Tell the player something has changed, so that it'll store it's new data
                 this.players[randomPlayerIndex].change();
             }
 
@@ -68,12 +66,14 @@
             this.toolbar.disabled = false;
         };
 
+        // Retrieve the active player
         this.getActivePlayer = function() {
             return this.players.filter(function(player) {
                 return (player.active)
             })[0];
         };
 
+        // Pass the turn to next player
         this.nextPlayerTurn = function() {
             var currentPlayer = this.getActivePlayer();
             currentPlayer.active = false;
@@ -89,6 +89,7 @@
             }
         };
 
+        // When a user selects an answer
         this.answerSelected = function(answer) {
             if(answer.correct) {
                 var index = this.players.indexOf(this.getActivePlayer());
@@ -101,6 +102,7 @@
             this.save();
         };
 
+        // Save the state of the game
         this.save = function() {
             this.players.forEach(function(player) {
                 player.change();

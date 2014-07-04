@@ -41,7 +41,7 @@
                         return question.difficulty == difficulty;
                     });
 
-                    var i = 3;
+                    var i = 3; // 3 random questions
                     var randomQuestions = [];
                     while(i--) {
                         var randomIndex = Math.floor(Math.random() * questions.length);

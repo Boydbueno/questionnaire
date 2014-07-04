@@ -3,7 +3,7 @@
 
     var app = angular.module('cardGameApp');
 
-    app.factory('Player', ['PlayerLocalStorage', function(storage) {
+    app.factory('Player', ['PlayerLocalStorage', function(storage) { // injected storage as dependency
         var storage = storage;
 
         var defaults = {
@@ -18,6 +18,7 @@
                 this.setData(props);
             }
 
+            // If the player got a numer, try to retrieve the data from storage
             if (this.number) {
                 this.setData(storage.get(this.number));
             }
@@ -40,7 +41,7 @@
         Object.defineProperties(Player.prototype, {
             genderIcon: {
                 get: function() {
-                    return (this.gender == 'male') ? "&#9794;" : "&#9792;";
+                    return (this.gender == 'male') ? "&#9794;" : "&#9792;"; // Gender icons (mars/venus icons)
                 }
             }
         });
