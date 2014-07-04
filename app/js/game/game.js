@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
     'use strict';
 
@@ -11,50 +11,58 @@
      */
     var app = angular.module('cardGameApp');
 
-    app.controller('GameCtrl', ['Player', function(Player) {
-
+    app.controller('GameCtrl', ['Player', '$http', function(Player, $http) {
         // Todo: Let a setting decide the amount of players
         this.players = [
             new Player({number: 1}),
             new Player({number: 2})
         ];
 
-        this.questions = {
-          draws: []
+        this.toolbar = {
+            disabled: false
         };
 
-        this.start = function () {
+        this.questions = {
+            draws: []
+        };
+
+        this.start = function() {
             // Todo: Set random player as starting player
             this.players[0].active = true;
         };
 
-        this.newQuestions = function(difficulty){
-            console.log(difficulty);
-            this.questions.draws = [
-                {
-                    question: "This is a math question",
-                    category: "math"
-                },
-                {
-                    question: "This is a game question",
-                    category: "games"
-                },
-                {
-                    question: "This is a music question",
-                    category: "music"
-                }
-            ];
+        this.newQuestions = function(difficulty) {
+            // Get random questions (mocked now)
+            var that = this;
+            $http({
+                method: 'GET',
+                url: '/questions.json'
+            }).success(function(data) {
+                that.questions.draws = data;
+            });
+
+            // Disable the difficulty select buttons
+            this.disableToolbar();
         };
 
-        this.reset = function () {
-            foreach.players(function (player) {
+        this.chooseQuestion = function(question) {
+            question.flipped = true;
+            this.questions.draws = [question];
+        }
+
+        this.disableToolbar = function() {
+            this.toolbar.disabled = true;
+        };
+
+        this.reset = function() {
+            foreach.players(function(player) {
                 player.resetScore();
             });
         };
 
     }]);
 
-    app.config(function ($routeProvider) {
+    app.config(function($routeProvider) {
         $routeProvider
             .when('/game', {
                 templateUrl: '/js/game/game.html',

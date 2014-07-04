@@ -13,9 +13,10 @@
     <div class="btn-toolbar">
         <div class="btn-group">
             <!-- Todo: Add loop for difficulties -->
-            <button class="btn btn-default" ng-click="game.newQuestions(1)">Easy</button>
-            <button class="btn btn-default" ng-click="game.newQuestions(2)">Normal</button>
-            <button class="btn btn-default" ng-click="game.newQuestions(3)">Hard</button>
+            <!-- Todo: Extract buttons into a directive -->
+            <button class="btn btn-default" ng-click="game.newQuestions(1)" ng-disabled="game.toolbar.disabled">Easy</button>
+            <button class="btn btn-default" ng-click="game.newQuestions(2)" ng-disabled="game.toolbar.disabled">Normal</button>
+            <button class="btn btn-default" ng-click="game.newQuestions(3)" ng-disabled="game.toolbar.disabled">Hard</button>
         </div>
     </div>
 
