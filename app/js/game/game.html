@@ -1,7 +1,7 @@
 <h1>Game</h1>
 
 <div class="players" ng-controller="GameCtrl as game">
-    <div class="player well col-md-5" ng-class="{'col-md-offset-2':$last}" ng-repeat="player in game.players">
+    <div class="well col-md-5" ng-class="{'col-md-offset-2':$last}" ng-repeat="player in game.players">
 
         <player-card></player-card>
 

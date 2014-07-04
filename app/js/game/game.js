@@ -19,9 +19,31 @@
             new Player({number: 2})
         ];
 
+        this.questions = {
+          draws: []
+        };
+
         this.start = function () {
             // Todo: Set random player as starting player
             this.players[0].active = true;
+        };
+
+        this.newQuestions = function(difficulty){
+            console.log(difficulty);
+            this.questions.draws = [
+                {
+                    question: "This is a math question",
+                    category: "math"
+                },
+                {
+                    question: "This is a game question",
+                    category: "games"
+                },
+                {
+                    question: "This is a music question",
+                    category: "music"
+                }
+            ];
         };
 
         this.reset = function () {

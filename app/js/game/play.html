@@ -3,7 +3,7 @@
 <div class="well clearfix" ng-controller="GameCtrl as game">
 
     <div class="players">
-        <div class="player col-md-5" ng-class="{'col-md-offset-2':$last}" ng-repeat="player in game.players">
+        <div class="col-md-5" ng-class="{'col-md-offset-2':$last}" ng-repeat="player in game.players">
 
             <player-card></player-card>
 
@@ -12,9 +12,16 @@
 
     <div class="btn-toolbar">
         <div class="btn-group">
-            <button class="btn btn-default">Easy</button>
-            <button class="btn btn-default">Normal</button>
-            <button class="btn btn-default">Hard</button>
+            <!-- Todo: Add loop for difficulties -->
+            <button class="btn btn-default" ng-click="game.newQuestions(1)">Easy</button>
+            <button class="btn btn-default" ng-click="game.newQuestions(2)">Normal</button>
+            <button class="btn btn-default" ng-click="game.newQuestions(3)">Hard</button>
+        </div>
+    </div>
+
+    <div class="playmat">
+        <div class="answer-card" ng-repeat="question in game.questions.draws">
+            {{ question.category }}
         </div>
     </div>
 
