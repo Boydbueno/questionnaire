@@ -10,13 +10,9 @@
  */
 angular
     .module('cardGameApp', [
-        'ngAnimate',
         'ngCookies',
-        'ngResource',
         'ngRoute',
-        'ngSanitize',
-        'ngTouch',
-        'ui.bootstrap'
+        'ngSanitize'
     ])
     .config(function ($locationProvider, $routeProvider) {
         $locationProvider.html5Mode(true);
